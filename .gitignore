@@ -982,3 +982,5 @@ fabric.properties
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/episerver,node,aspnetcore,dotnetcore,visualstudio,visualstudiocode,rider,git,csharp,web
+*.txt
+FLS.CoffeeDesk/modules/_protected/

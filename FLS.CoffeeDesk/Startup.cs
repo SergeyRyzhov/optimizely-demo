@@ -55,6 +55,7 @@ namespace FLS.CoffeeDesk
             }
 
             services.AddMvc();
+            services.AddCms();
             services.AddCommerce();
             services.AddEmbeddedLocalization<Startup>();
             services.ConfigureApplicationCookie(options =>
