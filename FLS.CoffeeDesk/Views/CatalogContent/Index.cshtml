@@ -1,0 +1,24 @@
+﻿@using EPiServer.Web.Mvc.Html
+@model FLS.CoffeeDesk.Models.CatalogViewModel
+
+@{
+    ViewBag.Title = @Model.Catalog.Name;
+    Layout = "_Layout";
+}
+
+<h2>@Model.Catalog.Name</h2>
+
+@foreach (var category in Model.Categories)
+{
+    <h3>@category.Name</h3>
+                      
+    <ul>
+        @foreach (var product in Model.Products[category.ContentLink.ID])
+        {
+            <li>
+                @Html.PropertyFor(m=>product.Name)
+                @Html.PropertyFor(m=>product.Image)
+            </li>
+        }
+    </ul>
+}
