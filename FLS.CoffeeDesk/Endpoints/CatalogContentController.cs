@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System.Linq;
+﻿using System.Linq;
 using EPiServer;
 using EPiServer.Commerce.Catalog.ContentTypes;
 using EPiServer.Web.Mvc;
@@ -24,24 +23,26 @@ namespace FLS.CoffeeDesk.Endpoints
         [HttpGet]
         public IActionResult Index(CatalogContent catalogContent)
         {
-            var categories = _contentRepository.GetChildren<DrinksCategory>(catalogContent.ContentLink).ToArray();
-            
-            var vm = new CatalogViewModel()
-            {
-                Catalog = catalogContent,
-                Categories = categories,
-                Products = categories.ToDictionary(c => c.ContentLink.ID,
-                    category => GetCategoryProducts(catalogContent, category))
-            };
-            
+            var vm = CreateCatalogViewModel(catalogContent);
             return View(vm);
         }
 
-        private CoffeeProduct[] GetCategoryProducts(CatalogContent catalogContent, DrinksCategory category)
+        private CatalogViewModel CreateCatalogViewModel(CatalogContent catalogContent)
         {
-            var products =
-                _contentLoader.GetChildren<CoffeeProduct>(category.ContentLink, CultureInfo.CurrentCulture);
-            return products.ToArray();
+            var categories = _contentLoader.GetChildren<DrinksCategory>(catalogContent.ContentLink).ToArray();
+            var productsMap = categories.ToDictionary(c => c.ContentLink.ID, GetCategoryProducts);
+
+            return new CatalogViewModel
+            {
+                Catalog = catalogContent,
+                Categories = categories,
+                Products = productsMap
+            };
+        }
+
+        private CoffeeProduct[] GetCategoryProducts(DrinksCategory category)
+        {
+            return _contentLoader.GetChildren<CoffeeProduct>(category.ContentLink).ToArray();
         }
     }
 }

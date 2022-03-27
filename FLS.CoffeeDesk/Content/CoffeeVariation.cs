@@ -2,7 +2,6 @@
 using EPiServer.Commerce.Catalog.ContentTypes;
 using EPiServer.Commerce.Catalog.DataAnnotations;
 using EPiServer.Core;
-using EPiServer.DataAnnotations;
 using EPiServer.Shell.ObjectEditing;
 using FLS.CoffeeDesk.Content.Metadata;
 

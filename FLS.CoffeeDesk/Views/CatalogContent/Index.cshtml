@@ -1,4 +1,5 @@
-﻿@using EPiServer.Web.Mvc.Html
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
 @model FLS.CoffeeDesk.Models.CatalogViewModel
 
 @{
@@ -16,8 +17,11 @@
         @foreach (var product in Model.Products[category.ContentLink.ID])
         {
             <li>
+                @if (!ContentReference.IsNullOrEmpty(product.Image))
+                {
+                    <img src="@Url.ContentUrl(product.Image)" width="150px" height="150px" />
+                }
                 @Html.PropertyFor(m=>product.Name)
-                @Html.PropertyFor(m=>product.Image)
             </li>
         }
     </ul>

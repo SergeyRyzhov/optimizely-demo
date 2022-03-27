@@ -984,3 +984,4 @@ fabric.properties
 # End of https://www.toptal.com/developers/gitignore/api/episerver,node,aspnetcore,dotnetcore,visualstudio,visualstudiocode,rider,git,csharp,web
 *.txt
 FLS.CoffeeDesk/modules/_protected/
+FLS.CoffeeDesk/App_Data/blobs/

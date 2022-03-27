@@ -1,7 +1,6 @@
 ﻿using EPiServer.Commerce.Catalog.ContentTypes;
 using EPiServer.Commerce.Catalog.DataAnnotations;
 using EPiServer.Core;
-using EPiServer.DataAnnotations;
 
 namespace FLS.CoffeeDesk.Content
 {

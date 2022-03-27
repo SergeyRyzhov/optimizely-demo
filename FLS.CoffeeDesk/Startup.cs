@@ -1,8 +1,5 @@
 ﻿using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Data;
-using EPiServer.DependencyInjection;
-using EPiServer.ServiceLocation;
-using EPiServer.Web.Internal;
 using EPiServer.Web.Routing;
 using Mediachase.Commerce.Anonymous;
 using Microsoft.AspNetCore.Builder;
