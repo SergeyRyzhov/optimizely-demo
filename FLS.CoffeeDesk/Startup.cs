@@ -59,7 +59,6 @@ namespace FLS.CoffeeDesk
             {
                 options.LoginPath = "/util/Login";
             });
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

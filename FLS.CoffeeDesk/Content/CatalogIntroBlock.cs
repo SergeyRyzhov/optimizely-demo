@@ -18,5 +18,7 @@ namespace FLS.CoffeeDesk.Content
 
         [AllowedTypes(typeof(CatalogContent))]
         public virtual ContentReference Catalog { get; set; }
+        
+        public virtual ContentReference Image { get; set; }
     }
 }

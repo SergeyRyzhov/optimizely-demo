@@ -6,23 +6,62 @@
     ViewBag.Title = @Model.Catalog.Name;
     Layout = "_Layout";
 }
+<div class="container">
+    <header class="row" style="justify-content: left">
+        <div style="flex: 1"></div>
+        <div style="flex: 8">
+            <h1>@Model.Catalog.Name</h1>
+        </div>
+        <div style="flex: 1"></div>
+        <div></div>
+    </header>
 
-<h2>@Model.Catalog.Name</h2>
-
-@foreach (var category in Model.Categories)
-{
-    <h3>@category.Name</h3>
-                      
-    <ul>
-        @foreach (var product in Model.Products[category.ContentLink.ID])
+    @foreach (var category in Model.Categories)
+    {
+        <div class="row">
+            <h3>@category.Name</h3>
+        </div>
+        @for (var index = 0; index < Model.Products[category.ContentLink.ID].Length; index += 1)
         {
-            <li>
-                @if (!ContentReference.IsNullOrEmpty(product.Image))
+            <div class="row">
+                @for (var index1 = 0; index1 < 1 && index + index1 < Model.Products[category.ContentLink.ID].Length; index1++)
                 {
-                    <img src="@Url.ContentUrl(product.Image)" width="150px" height="150px" />
+                    var product = Model.Products[category.ContentLink.ID][index + index1];
+                    <div class="text-box">
+                        <div class="text-area">
+                            <div>
+                                <h4>@Html.PropertyFor(m => product.Name)</h4>
+                                @Html.PropertyFor(m => product.Description)
+                            </div>
+                            <div>
+                                @foreach (var variation in Model.Variations[product.ContentLink.ID])
+                                {
+                                    <h5>@Html.PropertyFor(m => variation.Name)</h5>
+                                    <ul>
+                                        <li>Beans: @Model.GetDisplayBeansOrigin(variation)</li>
+                                        <li>Roasting: @Model.GetDisplayRoasting(variation)</li>
+                                        <li>Price: @Model.GetDisplayPrice(variation)</li>
+                                    </ul>
+                                }
+                            </div>
+                            <div>
+                                <a href="@Url.ContentUrl(product.ContentLink)" class="btn">
+                                    <div>
+                                        Details
+                                        <span></span><span></span><span></span><span></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="img-box">
+                        @if (!ContentReference.IsNullOrEmpty(product.Image))
+                        {
+                            <img src="@Url.ContentUrl(product.Image)"/>
+                        }
+                    </div>
                 }
-                @Html.PropertyFor(m=>product.Name)
-            </li>
+            </div>
         }
-    </ul>
-}
+    }
+</div>

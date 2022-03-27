@@ -1,4 +1,5 @@
-﻿using EPiServer.Commerce.Catalog.ContentTypes;
+﻿using System.ComponentModel;
+using EPiServer.Commerce.Catalog.ContentTypes;
 using EPiServer.Commerce.Catalog.DataAnnotations;
 using EPiServer.Core;
 
@@ -11,6 +12,9 @@ namespace FLS.CoffeeDesk.Content
         GroupName = nameof(CoffeeDesk))]
     public class CoffeeProduct : ProductContent
     {
+        [DisplayName("Rich description")]
+        [Localizable(true)]
+        public virtual XhtmlString Description { get; set; }
         public virtual ContentReference Image { get; set; }
     }
 }

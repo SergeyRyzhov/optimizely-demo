@@ -1,6 +1,20 @@
 ﻿@using EPiServer.Web.Mvc.Html
 @model FLS.CoffeeDesk.Content.CatalogIntroBlock
 
-@Html.PropertyFor(m => m.Description)
+<div class="row">
+    <div class="text-box">
+        <div class="text-area">
+            @Html.PropertyFor(m => m.Description)
 
-@Html.ContentLink(Model.Catalog)
+            <a href="@Url.ContentUrl(Model.Catalog)" class="btn">
+                <div>
+                    Go to catalog
+                    <span></span><span></span><span></span><span></span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div>
+        <img src="@Url.ContentUrl(Model.Image)"/>
+    </div>
+</div>

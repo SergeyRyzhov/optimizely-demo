@@ -785,21 +785,6 @@ fabric.properties
 
 # Support for Project snippet scope
 
-### Web ###
-*.asp
-*.cer
-*.csr
-*.css
-*.htm
-*.html
-*.js
-*.jsp
-*.php
-*.rss
-*.wasm
-*.wat
-*.xhtml
-
 ### VisualStudio ###
 
 # User-specific files
@@ -985,3 +970,4 @@ fabric.properties
 *.txt
 FLS.CoffeeDesk/modules/_protected/
 FLS.CoffeeDesk/App_Data/blobs/
+*.bak
