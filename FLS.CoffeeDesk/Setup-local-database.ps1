@@ -1,9 +1,3 @@
-#param(
-#     [Parameter(Mandatory=$true,
-#    HelpMessage="Do you want to remove existing DBs (y/N)")]
-#     [string]$PruneExistingDb
-#)
-
 $PruneExistingDb = $(Read-Host -Prompt 'Do you want to remove existing DBs (y/N)')
 
 if (& dotnet tool list  --global | Select-String "episerver.net.cli") {

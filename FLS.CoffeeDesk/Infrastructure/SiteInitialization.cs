@@ -16,9 +16,10 @@ namespace FLS.CoffeeDesk.Infrastructure
 
             var enableCatalogRoot = context.Locate.Advanced.GetService<EnableCatalogRoot>();
             enableCatalogRoot.SetCatalogAccessRights();
+            
+            var defaultRolesAssign = context.Locate.Advanced.GetService<GrantDefaultRoles>();
+            defaultRolesAssign.GrantTo("admin").GetAwaiter().GetResult();
         }
-
-        public void Preload(string[] parameters) { }
 
         public void Uninitialize(InitializationEngine context)
         {
@@ -27,6 +28,7 @@ namespace FLS.CoffeeDesk.Infrastructure
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
             context.Services.AddSingleton<EnableCatalogRoot>();
+            context.Services.AddSingleton<GrantDefaultRoles>();
         }
     }
 }

@@ -2,6 +2,9 @@
 @model FLS.CoffeeDesk.Content.CatalogIntroBlock
 
 <div class="row">
+    <div class="img-box">
+        <img src="@Url.ContentUrl(Model.Image)"/>
+    </div>
     <div class="text-box">
         <div class="text-area">
             @Html.PropertyFor(m => m.Description)
@@ -13,8 +16,5 @@
                 </div>
             </a>
         </div>
-    </div>
-    <div>
-        <img src="@Url.ContentUrl(Model.Image)"/>
     </div>
 </div>

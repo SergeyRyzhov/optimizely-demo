@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using EPiServer.Web.Mvc.Html
+<!DOCTYPE html>
 <html>
 <head>
     <title>@ViewData["Title"]</title>
@@ -6,6 +7,7 @@
 </head>
 <body>
 
+@await Html.RenderEPiServerQuickNavigatorAsync()
 @RenderBody()
 
 </body>

@@ -8,6 +8,7 @@ namespace FLS.CoffeeDesk.Endpoints
     {
         protected override IViewComponentResult InvokeComponent(TextBlock textBlock)
         {
+            // ReSharper disable once Mvc.ViewComponentViewNotResolved
             return View(textBlock);
         }
     }

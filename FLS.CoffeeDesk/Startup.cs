@@ -1,6 +1,7 @@
 ﻿using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Data;
 using EPiServer.Web.Routing;
+using FLS.CoffeeDesk.Migrations;
 using Mediachase.Commerce.Anonymous;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,6 +14,7 @@ namespace FLS.CoffeeDesk
     public class Startup
     {
         private readonly IWebHostEnvironment _webHostingEnvironment;
+
         private readonly IConfiguration _configuration;
 
         public Startup(IWebHostEnvironment webHostingEnvironment, IConfiguration configuration)
@@ -45,20 +47,13 @@ namespace FLS.CoffeeDesk
                     };
                 }
             });
-
-            if (_webHostingEnvironment.IsDevelopment())
-            {
-                //Add development configuration
-            }
-
+            
             services.AddMvc();
             services.AddCms();
             services.AddCommerce();
             services.AddEmbeddedLocalization<Startup>();
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = "/util/Login";
-            });
+            services.ConfigureApplicationCookie(options => { options.LoginPath = "/util/Login"; });
+            services.AddMigrations(_configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

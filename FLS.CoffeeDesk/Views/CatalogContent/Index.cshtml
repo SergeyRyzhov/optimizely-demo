@@ -33,15 +33,18 @@
                                 <h4>@Html.PropertyFor(m => product.Name)</h4>
                                 @Html.PropertyFor(m => product.Description)
                             </div>
-                            <div>
+                            <h5>Variations</h5>
+                            <div style="display: flex; flex-direction: row;">
                                 @foreach (var variation in Model.Variations[product.ContentLink.ID])
                                 {
-                                    <h5>@Html.PropertyFor(m => variation.Name)</h5>
-                                    <ul>
-                                        <li>Beans: @Model.GetDisplayBeansOrigin(variation)</li>
-                                        <li>Roasting: @Model.GetDisplayRoasting(variation)</li>
-                                        <li>Price: @Model.GetDisplayPrice(variation)</li>
-                                    </ul>
+                                    <div>
+                                        <h6>@Html.PropertyFor(m => variation.Name)</h6>
+                                        <ul>
+                                            <li>Beans: @Model.GetDisplayBeansOrigin(variation)</li>
+                                            <li>Roasting: @Model.GetDisplayRoasting(variation)</li>
+                                            <li>Price: @Model.GetDisplayPrice(variation)</li>
+                                        </ul>
+                                    </div>
                                 }
                             </div>
                             <div>

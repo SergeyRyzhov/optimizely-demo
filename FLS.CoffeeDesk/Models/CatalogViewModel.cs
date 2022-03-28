@@ -32,7 +32,9 @@ namespace FLS.CoffeeDesk.Models
 
         public string GetDisplayPrice(CoffeeVariation variation)
         {
-            return _priceService.GetDefaultPrice(MarketId.Default, DateTime.Now, new CatalogKey(variation.Code), Currency.USD)?.UnitPrice.ToString();
+            return _priceService.GetPrices(MarketId.Default, DateTime.Now, new CatalogKey(variation.Code),
+                new PriceFilter()).FirstOrDefault()?.UnitPrice.ToString();
+            //return _priceService.GetDefaultPrice(MarketId.Default, DateTime.Now, new CatalogKey(variation.Code), Currency.USD)?.UnitPrice.ToString();
         }
 
         public object GetDisplayBeansOrigin(CoffeeVariation variation)

@@ -17,7 +17,7 @@ namespace FLS.CoffeeDesk.Endpoints
 
         private readonly IContentLoader _contentLoader;
 
-        private IRelationRepository _relationRepository;
+        private readonly IRelationRepository _relationRepository;
 
         private readonly IPriceService _priceService;
 

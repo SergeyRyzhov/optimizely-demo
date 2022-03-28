@@ -7,6 +7,7 @@
     <PackageReference Include="EPiServer.CMS" Version="12.*" />
     <PackageReference Include="EPiServer.Commerce" Version="14.*" />
     <Folder Include="wwwroot\" />
+    <PackageReference Include="Faker.Net" Version="2.0.154" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
   </ItemGroup>
 </Project>
