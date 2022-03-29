@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using EPiServer;
 using EPiServer.Commerce.Catalog.ContentTypes;
+using EPiServer.Commerce.SpecializedProperties;
 using EPiServer.Core;
 using EPiServer.DataAccess;
 using EPiServer.Security;
@@ -59,6 +60,7 @@ namespace FLS.CoffeeDesk.Migrations
                 product.Name = Path.GetFileNameWithoutExtension(imageFile.Name);
                 product.Description = new XhtmlString(GenerateSomeHtml());
                 product.Image = imageFile.ContentLink;
+                product.CommerceMediaCollection.Add(new CommerceMedia(imageFile.ContentLink, "default", "default", 0));
                 _contentRepository.Save(product, SaveAction.Publish, AccessLevel.NoAccess);
 
                 for (int i = 0; i < 4; i++)
@@ -71,6 +73,7 @@ namespace FLS.CoffeeDesk.Migrations
                     variation.BeansOrigin = item.Value.ToString();
                     variation.Name = $"{beansRoasting.ToString()} {item.Text}";
                     variation.Image = imageFile.ContentLink;
+                    variation.CommerceMediaCollection.Add(new CommerceMedia(imageFile.ContentLink, "default", "default", 0));
                     _contentRepository.Save(variation, SaveAction.Publish, AccessLevel.NoAccess);
                     _priceService.SetCatalogEntryPrices(new CatalogKey(variation.Code), new IPriceValue[]
                     {
