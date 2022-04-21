@@ -7,6 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{169FF7
 		.gitignore = .gitignore
 		LICENSE = LICENSE
 		README.md = README.md
+		Dockerfile = Dockerfile
+		.dockerignore = .dockerignore
+		Run-in-docker.ps1 = Run-in-docker.ps1
 	EndProjectSection
 EndProject
 Global

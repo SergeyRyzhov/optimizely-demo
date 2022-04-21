@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
 namespace FLS.CoffeeDesk
@@ -16,7 +17,13 @@ namespace FLS.CoffeeDesk
 
         public static IHostBuilder CreateHostBuilder(string[] args, bool isDevelopment)
         {
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             return Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddJsonFile("appsettings.json")
+                        .AddJsonFile($"appsettings.{environment}.json");
+                })
                 .ConfigureCmsDefaults()
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
         }
