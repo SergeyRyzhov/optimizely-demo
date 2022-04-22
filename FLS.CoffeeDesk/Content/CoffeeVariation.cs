@@ -9,7 +9,6 @@ namespace FLS.CoffeeDesk.Content
 {
     [CatalogContentType(DisplayName = "Coffee variation",
         Description = "Coffee variation",
-        Order = 2,
         GUID = "3398371F-88F3-40EE-B0F1-D38F334F62D8",
         GroupName = nameof(CoffeeDesk))]
     public class CoffeeVariation : VariationContent

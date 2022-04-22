@@ -22,7 +22,7 @@ namespace FLS.CoffeeDesk
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     config.AddJsonFile("appsettings.json")
-                        .AddJsonFile($"appsettings.{environment}.json");
+                         .AddJsonFile($"appsettings.{environment}.json", true);
                 })
                 .ConfigureCmsDefaults()
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
